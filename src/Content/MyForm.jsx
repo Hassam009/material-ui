@@ -14,6 +14,8 @@ import {
   Container,
   Box,
 } from "@mui/material";
+import { green } from "@mui/material/colors";
+// import { Flare } from "@mui/icons-material";
 
 const MyForm = () => {
   // State variables for each input field
@@ -42,18 +44,35 @@ const MyForm = () => {
   };
 
   return (
-    <Container maxWidth="md">
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "10vh", // Ensures the container takes full height of the viewport
+      }}
+    >
       <Box
         sx={{
           // backgroundColor: "grey", // Change background color
           // border: "2px solid red",
           padding: 4, // Add padding to the form
           borderRadius: 2, // Optional: Add border radius for rounded corners
-          width: "100%", // Full width inside container
-          margin: "10px",
+          width: "50%", // Full width inside container
+          // margin: "10px",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        <form onSubmit={handleSubmit} style={{ border: "2px solid red" }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            border: "2px solid #f3ebeb",
+            padding: "20px",
+            borderRadius: "5px",
+            boxShadow: green,
+          }}
+        >
           {/* Text Field */}
           <TextField
             label="Your Name"
