@@ -13,8 +13,9 @@ import {
   FormLabel,
   Container,
   Box,
+  Snackbar
 } from "@mui/material";
-import { green } from "@mui/material/colors";
+// import { green } from "@mui/material/colors";
 // import { Flare } from "@mui/icons-material";
 
 const MyForm = () => {
@@ -42,26 +43,32 @@ const MyForm = () => {
       isSwitched,
     });
   };
+  const [open, setOpen] = useState(false);
 
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <Container
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "10vh", // Ensures the container takes full height of the viewport
+        minHeight: "10vh",
       }}
     >
       <Box
         sx={{
-          // backgroundColor: "grey", // Change background color
-          // border: "2px solid red",
-          padding: 4, // Add padding to the form
-          borderRadius: 2, // Optional: Add border radius for rounded corners
-          width: "50%", // Full width inside container
-          // margin: "10px",
+          padding: 4,
+          borderRadius: 2,
+          width: "50%",
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "column", // Allows elements to stack vertically
+          alignItems: "center", // Center align the button
         }}
       >
         <form
@@ -70,7 +77,7 @@ const MyForm = () => {
             border: "2px solid #f3ebeb",
             padding: "20px",
             borderRadius: "5px",
-            boxShadow: green,
+            width: "100%", // Ensure the form takes full width of the box
           }}
         >
           {/* Text Field */}
@@ -141,6 +148,23 @@ const MyForm = () => {
             Submit
           </Button>
         </form>
+
+        {/* Additional Button */}
+        <Button
+          variant="contained"
+          color="secondary"
+          sx={{ marginTop: 2 }}
+          onClick={handleClick}
+          
+        >
+          Check Now
+        </Button>
+        <Snackbar
+        open={open}
+        message="This is a Snackbar message!"
+        autoHideDuration={3000}
+        onClose={handleClose}
+      />
       </Box>
     </Container>
   );
